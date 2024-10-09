@@ -1,0 +1,27 @@
+﻿@model Event_Registration_System.Models.Registration
+<form asp-action="Create" asp-controller="Registraions" method="post">
+    <input type="hidden" asp-for="RegistrationId" />
+    <div class="form-group">
+        <label asp-for="EventId"></label>
+        <input asp-for="EventId" class="form-control" />
+        <span asp-validation-for="EventId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ParticipantName"></label>
+        <input asp-for="ParticipantName" class="form-control" />
+        <span asp-validation-for="ParticipantName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <textarea asp-for="Email" class="form-control"></textarea>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserId"></label>
+        <textarea asp-for="UserId" class="form-control"></textarea>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+<a asp-action="Index">Registration List</a>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable< Event_Registration_System.Models.Event>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Events/GetEvents.css" />
+}
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1>Events</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>EventId</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Capacity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sevent in Model)
+        {
+            
+            <tr>
+                <td>@sevent.EventId</td>
+                <td>@sevent.Title</td>
+                <td>@sevent.Date.ToShortDateString()</td>
+                <td>@sevent.Description</td>
+                <td>@sevent.Capacity</td>
+                <td>
+                    <a asp-action="GetEventById" asp-route-id="@sevent.EventId" class="AAS">Details</a> |
+                    <a asp-action="EditEvent" asp-route-id="@sevent.EventId" class="ASS">Edit</a> |
+                    <a asp-action="DeleteEvent" asp-route-id="@sevent.EventId" class="SSA">Delete</a>
+                    
+                </td>
+            </tr>
+
+    }
+    </tbody>
+</table>
+
+<a asp-action="AddEvent" class="add-event-button">Create New Event</a>
