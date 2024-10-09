@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Event_Registration_System.Models.Registration>
+<h2>Registrations List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>EventId</th>
+            <th>UserId</th>
+            <th>RegistrationId</th>
+            <th>ParticipantName</th>
+            <th>Email</th>
+            <th>Confirmation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var register in Model)
+        {
+            <tr>
+                <td>@register.EventId</td>
+                <td>@register.UserId</td>
+                <td>@register.RegistrationId</td>
+                <td>@register.ParticipantName</td>
+                <td>@register.Email</td>
+                <td>
+                    <form method="post" asp-action="Index" asp-controller="Registraions">
+                        <input type="hidden" name="registrationId" value="@register.RegistrationId" />
+                        <input type="submit" value="Approve" class="btn btn-primary" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
